@@ -11,14 +11,12 @@ Two ways to add your voice:
 
 **s01-01** · `0:00.5`  
 Hello. My name is Gustavo Zanatta Bruno, and I'm a postdoc student of Professor Cristiano Bonato Both.  
-› highlight at `0:00.5`: slide area “author”  
 
 **s01-02** · `0:08.5`  
 In this demo, an application asks the mobile network for better quality of service through the CAMARA Quality on Demand API, and we watch a public 5G core, free5GC, put that request into effect.  
 
 **s01-03** · `0:23.9`  
 Everything runs on one Linux machine: free5GC release 4.2.3, UERANSIM to simulate the phone and the radio, and a small gateway that speaks CAMARA, version 1.1.0 of the API.  
-› highlight at `0:24.0`: slide area “stack”  
 
 ## s02 · Architecture
 
