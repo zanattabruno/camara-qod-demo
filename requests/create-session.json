@@ -1,0 +1,17 @@
+{
+  "device": {
+    "ipv4Address": {"publicAddress": "10.60.0.1", "privateAddress": "10.60.0.1"}
+  },
+  "applicationServer": {"ipv4Address": "198.51.100.10"},
+  "devicePorts": {"ports": [6000]},
+  "applicationServerPorts": {"ports": [5000]},
+  "qosProfile": "QOS_L",
+  "duration": 600,
+  "sink": "https://127.0.0.1:9443/notifications",
+  "sinkCredential": {
+    "credentialType": "ACCESSTOKEN",
+    "accessToken": "demo-token",
+    "accessTokenExpiresUtc": "2030-01-01T00:00:00Z",
+    "accessTokenType": "bearer"
+  }
+}

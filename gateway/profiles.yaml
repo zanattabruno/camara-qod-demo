@@ -1,0 +1,7 @@
+# CAMARA QoS profile name -> the media component sent to the PCF.
+# The PCF picks the 5QI from medType: AUDIO -> 1, VIDEO -> 2, DATA -> 9.
+# marBw* = maximum bit rate, mirBw* = guaranteed bit rate, maxDuration in seconds.
+QOS_E: {medType: AUDIO, marBwDl: 1 Mbps,  marBwUl: 1 Mbps, mirBwDl: 512 Kbps, mirBwUl: 512 Kbps, maxDuration: 3600}
+QOS_S: {medType: DATA,  marBwDl: 2 Mbps,  marBwUl: 1 Mbps, maxDuration: 86400}
+QOS_M: {medType: VIDEO, marBwDl: 10 Mbps, marBwUl: 2 Mbps, mirBwDl: 5 Mbps,  mirBwUl: 1 Mbps, maxDuration: 86400}
+QOS_L: {medType: VIDEO, marBwDl: 20 Mbps, marBwUl: 5 Mbps, mirBwDl: 10 Mbps, mirBwUl: 2 Mbps, maxDuration: 86400}

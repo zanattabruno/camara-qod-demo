@@ -1,0 +1,7 @@
+.lab/
+video/.venv/
+video/build/
+video/out/
+video/recordings/*.wav
+gateway/gateway
+__pycache__/
