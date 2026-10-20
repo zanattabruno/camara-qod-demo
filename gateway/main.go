@@ -1,7 +1,9 @@
 // Command gateway exposes the CAMARA Quality-On-Demand API v1.1.0 and fulfils
 // it with the 5G core's PCF over N5 (3GPP TS 29.514 Npcf_PolicyAuthorization).
+// It plays the role of the NEF in this lab: the free5GC NEF does not implement
+// TS 29.122 AsSessionWithQoS, so the gateway is the core's exposure point.
 //
-//	app --CAMARA QoD--> gateway --N5--> PCF --N7--> SMF --N4--> UPF
+//	app --CAMARA QoD--> gateway (our NEF) --N5--> PCF --N7--> SMF --N4--> UPF
 package main
 
 import (
