@@ -97,3 +97,7 @@ cd video && ./setup.sh
 
 To add your voice, record `video/recordings/<seg>-<NN>.wav` per cue (for example `d4-03.wav`) and
 render again. Each cue is stretched to fit your take, and the captions follow it.
+
+For a version narrated by a synthetic voice, run `.venv/bin/python build.py render --voice`. It
+speaks the script with [Piper](https://github.com/rhasspy/piper) (offline, voice `en_US-lessac-medium`)
+and writes `out/qod-demo-voice.mp4` and `out/qod-demo-voice-captions.mp4`, with captions timed to the speech.

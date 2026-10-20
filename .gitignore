@@ -5,3 +5,4 @@ video/out/
 video/recordings/*.wav
 gateway/gateway
 __pycache__/
+video/voices/
