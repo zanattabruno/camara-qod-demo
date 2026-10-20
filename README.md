@@ -1,5 +1,10 @@
 # CAMARA Quality-on-Demand on a public 5G core
 
+**Objective:** show, end to end, that one standard API call really changes how a 5G network
+treats traffic, using only open-source software. The demo follows a single CAMARA request from
+the API, through 3GPP policy (gateway as AF → PCF → SMF), to the packet and QoS rules the UPF
+installs, and then removes them again when the session is deleted.
+
 A small, end-to-end lab. An application asks for better QoS through the
 [CAMARA Quality-On-Demand API](https://github.com/camaraproject/QualityOnDemand) (v1.1.0), and an
 unmodified [free5GC](https://github.com/free5gc/free5gc) v4.2.3 core enforces it for a
