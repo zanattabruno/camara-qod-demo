@@ -6,3 +6,4 @@ video/recordings/*.wav
 gateway/gateway
 __pycache__/
 video/voices/
+video/.venv-clone/
