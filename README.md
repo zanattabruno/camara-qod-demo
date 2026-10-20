@@ -132,8 +132,3 @@ Then the QoD lifecycle:
 of a freshly started SMF. If your UE got another address (`ip -br addr show uesimtun0`), change it there.
 
 To test the gateway without a core, run `cd gateway && go test ./...`.
-
-## The video
-
-The demo video (slides, narration, recording and rendering) is built from a local `video/` folder
-that is not published with this repository. [NOTES.md](NOTES.md) is its speaker script, with timecodes.
