@@ -41,9 +41,28 @@ session ended, the gateway sends `UNAVAILABLE / NETWORK_TERMINATED`.
 - **Sessions live in memory.** Restarting the gateway forgets them.
 - Bit rates show up in the UPF as Kbps, with 1 Mbps = 1024 Kbps.
 
-## Run it
+## Prerequisites
 
-Tested on Ubuntu 24.04, kernel 6.8, Go 1.26.2, MongoDB 8.2, with passwordless `sudo`.
+Tested on Ubuntu 24.04, kernel 6.8, Go 1.26.2, Node.js 20, MongoDB 8.2, with passwordless `sudo`.
+
+```bash
+sudo apt-get install -y build-essential linux-headers-$(uname -r) git curl jq openssl python3
+```
+
+Three more things that are not in Ubuntu's archive at the right version:
+
+- **Go 1.26.2 or newer.** free5GC v4.2.3 requires it in every `go.mod`. Install the tarball from
+  [go.dev/dl](https://go.dev/dl/) into `/usr/local/go`, and put `/usr/local/go/bin` and `~/go/bin` on your `PATH`.
+- **Node.js 20 and yarn**, to build the webconsole. For example, Node.js from
+  [NodeSource](https://github.com/nodesource/distributions), then `sudo npm install -g yarn`.
+- **MongoDB**, running on `127.0.0.1:27017`. Install `mongodb-org` (which includes `mongosh`) from
+  [MongoDB's apt repository](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/),
+  then `sudo systemctl enable --now mongod`.
+
+`install-free5gc.sh` installs the apt packages too, and stops with a list if Go, Node.js, yarn or
+MongoDB is missing.
+
+## Run it
 
 ```bash
 ./scripts/install-free5gc.sh     # gtp5g, free5GC v4.2.3 (+ webconsole), OAuth off, gogtp5g-tunnel
@@ -84,20 +103,5 @@ To test the gateway without a core, run `cd gateway && go test ./...`.
 
 ## The video
 
-[video/](video/) builds the demo video. It records the steps above with VHS and tmux, adds the two
-slides from [video/slides/](video/slides/) (an editable `qod-demo.pptx` is there too), and draws
-highlights on the important lines. The narration lives in [video/narration/](video/narration/), and
-[NOTES.md](NOTES.md) is the generated speaker script with timecodes.
-
-```bash
-cd video && ./setup.sh
-.venv/bin/python build.py record    # runs the whole lab, about 3 minutes
-.venv/bin/python build.py render    # out/qod-demo.mp4 (soft subtitles) and out/qod-demo-captions.mp4 (burned in)
-```
-
-To add your voice, record `video/recordings/<seg>-<NN>.wav` per cue (for example `d4-03.wav`) and
-render again. Each cue is stretched to fit your take, and the captions follow it.
-
-For a version narrated by a synthetic voice, run `.venv/bin/python build.py render --voice`. It
-speaks the script with [Piper](https://github.com/rhasspy/piper) (offline, voice `en_US-lessac-medium`)
-and writes `out/qod-demo-voice.mp4` and `out/qod-demo-voice-captions.mp4`, with captions timed to the speech.
+The demo video (slides, narration, recording and rendering) is built from a local `video/` folder
+that is not published with this repository. [NOTES.md](NOTES.md) is its speaker script, with timecodes.

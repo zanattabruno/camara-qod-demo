@@ -1,11 +1,29 @@
 #!/usr/bin/env bash
 # Install the public free5gc release used by the demo.
 # Needs: Go (the version in free5gc's go.mod), Node.js + yarn (webconsole), MongoDB, sudo.
+# See "Prerequisites" in the README.
 set -euo pipefail
 
 TAG=${FREE5GC_TAG:-v4.2.3}
 DIR=${FREE5GC_DIR:-$HOME/free5gc}
 GTP5G_TAG=${GTP5G_TAG:-v0.9.16}
+GO_MIN=1.26.2   # what free5gc v4.2.3's go.mod files ask for
+
+# 0. Build tools and the demo scripts' helpers; fail early on what apt cannot install.
+sudo apt-get install -y build-essential "linux-headers-$(uname -r)" git curl jq openssl
+missing=()
+command -v go >/dev/null || missing+=("Go >= $GO_MIN")
+if command -v go >/dev/null; then
+    have=$(go env GOVERSION | sed 's/^go//')
+    [ "$(printf '%s\n' "$GO_MIN" "$have" | sort -V | head -1)" = "$GO_MIN" ] || missing+=("Go >= $GO_MIN (found $have)")
+fi
+command -v node >/dev/null || missing+=("Node.js")
+command -v yarn >/dev/null || missing+=("yarn")
+command -v mongod >/dev/null || missing+=("MongoDB")
+if [ ${#missing[@]} -gt 0 ]; then
+    printf 'missing: %s\n' "${missing[@]}" >&2
+    exit 1
+fi
 
 # 1. gtp5g: the kernel module the UPF uses for the GTP-U data plane.
 if ! lsmod | grep -q '^gtp5g'; then

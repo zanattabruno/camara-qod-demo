@@ -1,9 +1,5 @@
 .lab/
-video/.venv/
-video/build/
-video/out/
-video/recordings/*.wav
 gateway/gateway
 __pycache__/
-video/voices/
-video/.venv-clone/
+# The demo video pipeline is kept local, out of the published repo.
+video/
